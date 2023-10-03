@@ -1,0 +1,2 @@
+FG STD Hrs minus Adj Hrs by Business Days = 
+SUMX(DIM_EE, 8 * [Business Days Employed CY MTD]) - [Adj Hrs YTD]

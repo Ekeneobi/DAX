@@ -1,0 +1,72 @@
+Business Days Employed CY YTD = 
+VAR CurrentYear = SELECTEDVALUE(DateTable[CalendarYear])
+VAR CurrentMonth = SELECTEDVALUE(DateTable[Monthnumber])
+VAR BegofYear = IF(ISBLANK(CurrentYear), 
+                BLANK(), 
+                DATE ( CurrentYear, 1, 1 ) )
+var CurrentDate = DATE ( CurrentYear, CurrentMonth, Day(TODAY() ) )
+VAR CurrentMoEnd = EOMONTH(CurrentDate,0)
+VAR DateHired = MAX(DIM_EE[date_Hired])
+VAR TermDate = MAX(DIM_EE[cF_termdate])
+
+VAR EmployedCY_WithoutTerminations = 
+IF ( 
+    ISBLANK ( DateHired ),
+            0,
+    IF(
+        OR(ISBLANK ( TermDate ), 
+            YEAR ( TermDate ) > CurrentYear)
+        && DateHired <= CurrentMoEnd, 
+        1, 
+        0 ) )
+
+//Identify CY Employees (not including terminations)
+
+VAR TerminatedCY = 
+IF (
+    YEAR ( TermDate ) = CurrentYear
+        &&  DateHired  <= CurrentMoEnd,
+    1,
+    0 )
+//Identify Employees Terminated in CY
+
+VAR CYBizDaysWorked =
+IF (
+    EmployedCY_WithoutTerminations = 0, 0,
+    IF(
+        DateHired < BegOfYear,
+            NETWORKDAYS(
+                BegOfYear,
+                CurrentMoEnd),
+            NETWORKDAYS(
+                MIN(DateHired,CurrentMoEnd),
+                CurrentMoEnd) ) )
+//Compute CY Business Days worked for Current Year Employees (not including terminations) 
+
+VAR CYBizDaysWorked_Terminated = 
+IF (
+    TerminatedCY=0, 0,
+        IF(
+            DateHired < BegOfYear,
+                NETWORKDAYS(
+                    BegOfYear,
+                    MIN(TermDate,CurrentMoEnd) ),
+                NETWORKDAYS(
+                    DateHired,
+                    MIN(TermDate,CurrentMoEnd) ) ) )
+//Compute CY Business Days worked for Employees Terminated in CY
+
+RETURN
+    IF( SUMX('DIM_EE',EmployedCY_WithoutTerminations)=1, 
+        SUMX('DIM_EE',CYBizDaysWorked),
+            IF(SUMX('DIM_EE',TerminatedCY)=1,
+                SUMX('DIM_EE',CYBizDaysWorked_Terminated),
+                SUMX('DIM_EE',0)))
+//Compute CY Business Days worked for Current Employees and Employees Terminated in CY)
+
+
+
+//Did not use Below variable, saving for future reference if needed.
+//VAR PriorMoEnd = IF(ISBLANK(CurrentYear),
+//                 BLANK(),
+//                 EOMONTH ( CurrentMoEnd, -1 ) )

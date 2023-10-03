@@ -1,0 +1,1 @@
+YTD FG STD Hrs = TOTALYTD(sum('DIM_FG STD HRS'[Hours]),'DateTable'[Date])

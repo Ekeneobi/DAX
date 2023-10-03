@@ -1,0 +1,1 @@
+AF STD Hrs = sum('DIM_AF STD HRS'[Hours])

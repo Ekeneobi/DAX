@@ -1,0 +1,1 @@
+FG STD Hrs = sum('DIM_FG STD HRS'[Hours])

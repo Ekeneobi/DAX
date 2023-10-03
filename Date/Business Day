@@ -1,0 +1,1 @@
+Business Day = IF('DateTable'[DayOfWeek]="Saturday" || 'DateTable'[DayOfWeek]="Sunday", 0, 1)

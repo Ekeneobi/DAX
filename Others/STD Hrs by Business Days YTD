@@ -1,0 +1,3 @@
+STD Hrs by Business Days YTD = 
+SUMX(DIM_EE,
+    DIM_EE[Business Hours] * [Business Days Employed CY YTD])

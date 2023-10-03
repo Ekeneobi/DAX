@@ -1,0 +1,1 @@
+Business Hours = IF(DIM_EE[Hours Flag]=0, 7.5, 8)

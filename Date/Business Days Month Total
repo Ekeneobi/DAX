@@ -1,0 +1,8 @@
+Business Days Month Total = 
+CALCULATE (
+   SUM ( 'DateTable'[Business Day] ),
+   FILTER (
+     'DateTable',
+        'DateTable'[CalendarYear] = EARLIER ( 'DateTable'[CalendarYear] )
+       && 'DateTable'[Monthnumber] = EARLIER ( 'DateTable'[Monthnumber] )
+   ))

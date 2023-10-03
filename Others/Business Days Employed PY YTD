@@ -1,0 +1,5 @@
+Business Days Employed PY YTD = 
+CALCULATE (
+    [Business Days Employed CY YTD],
+    SAMEPERIODLASTYEAR ( 'DateTable'[Date].[Date] )
+)
