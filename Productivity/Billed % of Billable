@@ -1,0 +1,6 @@
+Billed % of Billable = 
+DIVIDE(
+	SUM('FACT_Time Detail'[Billed Hrs]),
+	SUM('FACT_Time Detail'[Billable Hrs]),
+    0
+)

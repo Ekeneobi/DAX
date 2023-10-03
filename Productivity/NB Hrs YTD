@@ -1,0 +1,1 @@
+NB Hrs YTD = TOTALYTD(SUM('FACT_Time Detail'[NB Hrs]),DateTable[Date])

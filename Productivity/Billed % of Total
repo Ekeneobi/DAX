@@ -1,0 +1,2 @@
+Billed % of Total = 
+DIVIDE([Billed Hours], [Adj Avail Hrs],0)

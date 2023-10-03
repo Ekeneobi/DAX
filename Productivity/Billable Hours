@@ -1,0 +1,1 @@
+Billable Hours = sum('FACT_Time Detail'[Billable Hrs])

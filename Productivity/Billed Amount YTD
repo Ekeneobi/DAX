@@ -1,0 +1,1 @@
+Billed Amount YTD = TOTALYTD(sum('FACT_Time Detail'[Billed Amount]),DateTable[Date])

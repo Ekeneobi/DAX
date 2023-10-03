@@ -1,0 +1,1 @@
+Total Hrs YTD = TOTALYTD(sum('FACT_Time Detail'[Actual Hours Worked]), DateTable[Date])

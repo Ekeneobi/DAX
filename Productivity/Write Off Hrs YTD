@@ -1,0 +1,1 @@
+Write Off Hrs YTD = TOTALYTD(SUM('FACT_Time Detail'[Write off Hours]),'DateTable'[Date])

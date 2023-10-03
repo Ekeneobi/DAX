@@ -1,0 +1,2 @@
+Billed % of Total YTD = 
+DIVIDE([Billed Hours YTD], [Adj Avail Hrs YTD],0)

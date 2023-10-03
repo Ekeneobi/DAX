@@ -1,0 +1,6 @@
+Billed % of Billable YTD = 
+DIVIDE(
+	[Billed Hours YTD],
+	[Billable Hours YTD],
+    0
+)

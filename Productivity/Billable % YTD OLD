@@ -1,0 +1,2 @@
+Billable % YTD OLD = 
+DIVIDE([Billable Hours YTD], [STD Hrs minus Adj Hrs YTD], 0)
