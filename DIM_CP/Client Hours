@@ -1,0 +1,18 @@
+Client Hours = 
+VAR WF_Hrs =
+    CALCULATE (
+        SUM ( 'FACT_WF_TIME_DETAIL_V10062023'[Hours] ),
+        TREATAS ( VALUES ( 'Dim_CP'[Client] ), 'FACT_WF_TIME_DETAIL_V10062023'[Client] ),
+        TREATAS ( VALUES ( 'Dim_CP'[Project: Name] ), 'FACT_WF_TIME_DETAIL_V10062023'[Project: Name] ),
+        TREATAS(VALUES('DIM_CP'[Task Name]),'FACT_WF_TIME_DETAIL_V10062023'[Source])
+        
+    )
+VAR WMJ_Hrs =
+    CALCULATE (
+        SUM ( 'FACT_Time Detail'[Billable Hrs] ),
+        TREATAS ( VALUES ( 'Dim_CP'[Client] ), 'FACT_Time Detail'[Client] ),
+        TREATAS ( VALUES ( 'Dim_CP'[Project: Name] ), 'FACT_Time Detail'[Project Full Name] ),
+        TREATAS(VALUES('DIM_CP'[Task Name]),'FACT_Time Detail'[Task Name])
+    )
+RETURN
+    WF_Hrs + WMJ_Hrs

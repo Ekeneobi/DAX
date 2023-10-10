@@ -1,1 +1,4 @@
-Billable Hours = sum('FACT_Time Detail'[Billable Hrs])
+Billable Hours = (sum('FACT_Time Detail'[Billable Hrs]) + SUM('WF_TIMEDTLEXPORT_AU - Data List'[Billable Hrs]))
+
+
+Billable Hours = (sum('FACT_Time Detail'[Billable Hrs]) + SUM('FACT_WF_TIME_DETAIL_V10062023'[Hours]))

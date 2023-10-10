@@ -1,0 +1,23 @@
+DIM_CP = 
+    UNION (
+        SUMMARIZE (
+            'WF_TIMEDTLEXPORT_AU - Data List',
+            [Client],
+            [Project: Name]
+           
+        ),
+        SUMMARIZE (
+            'FACT_Time Detail',
+            'FACT_Time Detail'[Client], 
+             'FACT_Time Detail'[Project Full Name]
+        ) 
+        
+       
+)
+
+
+
+
+
+
+

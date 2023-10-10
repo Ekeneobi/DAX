@@ -1,2 +1,2 @@
 Billable % by Business Days = 
-DIVIDE([Billable Hours], [STD Hrs minus Adj Hrs by Business Days], 0)
+DIVIDE(([Billable Hours] + [WF_Billable Hours]), [STD Hrs minus Adj Hrs by Business Days], 0) 
