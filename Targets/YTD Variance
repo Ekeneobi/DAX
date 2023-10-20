@@ -1,0 +1,1 @@
+YTD Hr Variance % = DIVIDE([Billable Hours YTD],[Year Target],0)

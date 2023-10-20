@@ -1,0 +1,1 @@
+Billable Hours YTD = TOTALYTD(SUM('FACT_Time Detail'[Billable Hrs]),'DateTable'[Date])

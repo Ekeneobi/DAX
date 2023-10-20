@@ -1,0 +1,1 @@
+Billable Hours MTD = TOTALMTD(SUM('FACT_Time Detail'[Billable Hrs]),'DateTable'[Date])

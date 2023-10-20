@@ -1,0 +1,1 @@
+Billable Hours WTD = TOTALWTD(SUM('FACT_Time Detail'[Billable Hrs]),'DateTable'[Date])

@@ -1,0 +1,1 @@
+DIVIDE('FACT_Time Detail'[Billable Hours YTD],'FACT_HR_TARGETS'[Yearly Target],0)

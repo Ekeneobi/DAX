@@ -1,0 +1,17 @@
+=IF(ISBLANK([@[Destination URL]]),"MISSING DESTINATION URL",IF(ISBLANK([@Medium]),"MISSING MEDIUM",IF(ISBLANK([@[Source/Vendor]]),"MISSING SOURCE",
+        IF(ISBLANK([@[Campaign Code ]]),"MISSING CAMPAIGN NAME",LOWER(SUBSTITUTE(CONCAT(G2,IF(OR(RIGHT(G2,5)=".html",RIGHT(G2,4)=".htm",RIGHT(G2,6)=".shtml",
+                RIGHT(G2,4)=".asp",RIGHT(G2,3)=".pl",RIGHT(G2,4)=".cgi",RIGHT(G2,4)=".php"),"?"),
+                            "utm_source=",D2,"&utm_medium=",C2,"&utm_campaign=",B2,"&utm_content=",E2,IF(ISBLANK(F2),"","&utm_term="),F2)," ","_"))))))
+
+
+
+=IF(ISBLANK(J51),"MISSING DESTINATION URL",IF(ISBLANK(B51),"MISSING MEDIUM",IF(ISBLANK(A51),"MISSING SOURCE",IF(ISBLANK(K51),"MISSING CAMPAIGN NAME",
+        LOWER(SUBSTITUTE(CONCAT(J51,"?",
+        "utm_source=",A51,"&utm_medium=",B51,"&utm_campaign=",K51,"&utm_content=",I51,IF(ISBLANK(E51),"","&utm_term="),E51)," ","_"))))))
+
+
+
+
+        =IF(ISBLANK([@[Destination URL]]),"MISSING DESTINATION URL",IF(ISBLANK([@Medium]),"MISSING MEDIUM",IF(ISBLANK([@[Source/Vendor]]),"MISSING SOURCE",
+        IF(ISBLANK([@[Campaign Code ]]),"MISSING CAMPAIGN NAME",LOWER(SUBSTITUTE(CONCAT(G2,"?",
+                            "utm_source=",D2,"&utm_medium=",C2,"&utm_campaign=",B2,"&utm_content=",E2,IF(ISBLANK(F2),"","&utm_term="),F2)," ","_"))))))
