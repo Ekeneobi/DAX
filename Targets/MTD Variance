@@ -1,1 +1,6 @@
-MTD Hr Variance % = DIVIDE([Billable Hours],[Month Target],0)
+MTD Hr Variance % = 
+
+VAR ACTUALMONTHTARGET = IF(TOTALMTD(SUMX('FACT_WF_TIME_DETAIL_V10062023','FACT_WF_TIME_DETAIL_V10062023'[WF Client Hrs]) + SUMX('FACT_Time Detail','FACT_Time Detail'[Billable Hrs]),DateTable[Date]) > 0, TOTALMTD(SUMX('FACT_WF_TIME_DETAIL_V10062023','FACT_WF_TIME_DETAIL_V10062023'[WF Client Hrs]) + SUMX('FACT_Time Detail','FACT_Time Detail'[Billable Hrs]),DateTable[Date]), 0)
+
+RETURN
+DIVIDE([Billable Hours], ACTUALMONTHTARGET, 0 )
