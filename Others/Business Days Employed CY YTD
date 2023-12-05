@@ -1,4 +1,4 @@
-Business Days Employed CY YTD = 
+=Business Days Employed CY YTD  
 VAR CurrentYear = SELECTEDVALUE(DateTable[CalendarYear])
 VAR CurrentMonth = SELECTEDVALUE(DateTable[Monthnumber])
 VAR BegofYear = IF(ISBLANK(CurrentYear), 

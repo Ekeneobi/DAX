@@ -1,0 +1,40 @@
+Target Hours Employed CY YTD = 
+
+VAR CurrentYear = SELECTEDVALUE(DateTable[CalendarYear])
+VAR CurrentMonth = SELECTEDVALUE(DateTable[Monthnumber])
+VAR CurrentDate = DATE ( CurrentYear, CurrentMonth, Day(TODAY() ) )
+VAR CurrentMoEnd = EOMONTH(CurrentDate,0)
+VAR DateHired = MAX(DIM_EE[date_Hired])
+VAR TermDate = MAX(DIM_EE[cF_termdate])
+
+
+VAR TerminatedCY = 
+IF (
+    YEAR ( TermDate ) = CurrentYear
+        &&  DateHired  <= CurrentMoEnd,
+    1,
+    0 )
+//Identify Employees Terminated in CY
+
+VAR NewHiresCY =
+
+IF (
+    YEAR(DateHired) = CurrentYear, 1, 0
+)
+
+// New Hires in CY
+
+
+RETURN
+
+IF (
+    SUMX(DIM_EE,NewHiresCY) = 1,
+    SUMX(FACT_HR_TARGETS,'FACT_HR_TARGETS'[Monthly Target] * monthnumber(DateHired) - 2 /12),
+    IF(
+        SUMX (DIM_EE,TerminatedCY) = 1, 
+        TOTALYTD(SUMX('FACT_Time Detail'[Billable Hrs]),'DateTable'[Date])
+    ), SUMX(FACT_HR_TARGETS, 'FACT_HR_TARGETS'[Yearly Target] )
+)
+
+//Target Hours for Newly Hired And Termianted - are Prorated all Other Target Hours remain the same
+// Target Hours is given
