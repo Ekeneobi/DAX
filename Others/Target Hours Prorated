@@ -6,11 +6,21 @@ VAR CurrentDate = DATE ( CurrentYear, CurrentMonth, Day(TODAY() ) )
 VAR CurrentMoEnd = EOMONTH(CurrentDate,0)
 VAR DateHired = MAX(DIM_EE[date_Hired])
 VAR TermDate = MAX(DIM_EE[cF_termdate])
+VAR DateHireMnthNum = MONTH(MAX(DIM_EE[date_Hired])) 
+VAR DateTerminatedMnthNum = MONTH(MAX(DIM_EE[cF_termdate]))
+VAR EmployedCY_WithoutTerminations = 
+IF ( 
+    ISBLANK ( DateHired ),
+            0,
+    IF(
+        OR(ISBLANK ( TermDate ), 
+            YEAR ( TermDate ) > CurrentYear), 
+        1, 
+        0 ) )
 
 
 VAR TerminatedCY = 
-IF (
-    YEAR ( TermDate ) = CurrentYear
+IF (YEAR ( TermDate ) = CurrentYear
         &&  DateHired  <= CurrentMoEnd,
     1,
     0 )
@@ -18,23 +28,25 @@ IF (
 
 VAR NewHiresCY =
 
-IF (
-    YEAR(DateHired) = CurrentYear, 1, 0
-)
+IF (YEAR(DateHired) = CurrentYear
+        && ISBLANK(TermDate), 
+    1, 
+    0 )
 
 // New Hires in CY
 
 
 RETURN
 
-IF (
-    SUMX(DIM_EE,NewHiresCY) = 1,
-    SUMX(FACT_HR_TARGETS,'FACT_HR_TARGETS'[Monthly Target] * monthnumber(DateHired) - 2 /12),
-    IF(
-        SUMX (DIM_EE,TerminatedCY) = 1, 
-        TOTALYTD(SUMX('FACT_Time Detail'[Billable Hrs]),'DateTable'[Date])
-    ), SUMX(FACT_HR_TARGETS, 'FACT_HR_TARGETS'[Yearly Target] )
+IF (SUMX(DIM_EE,NewHiresCY) = 1,
+    SUMX(SUMMARIZE(FACT_HR_TARGETS,'FACT_HR_TARGETS'[Name],"Value",SUM('FACT_HR_TARGETS'[Yearly Target])),[Value]) * SUMX(SUMMARIZE('DIM_EE','DIM_EE'[Employee],"Values",DIVIDE(10 - SUM(DateHireMnthNum),12,0)),"Values"),
+    IF(SUMX (DIM_EE,TerminatedCY) = 1, 
+    TOTALYTD(SUMX('FACT_Time Detail','FACT_Time Detail'[Billable Hrs]),'DateTable'[Date]),
+        IF (SUMX(DIM_EE,DateHireMnthNum) < 0 && SUMX(DIM_EE,DateTerminatedMnthNum) < 0,
+            TOTALYTD(SUMX('FACT_Time Detail','FACT_Time Detail'[Billable Hrs]),'DateTable'[Date]),
+            SUMX(SUMMARIZE(FACT_HR_TARGETS,'FACT_HR_TARGETS'[Name],"Value", SUM('FACT_HR_TARGETS'[Yearly Target])),[Value])
+        )
+    )
 )
-
 //Target Hours for Newly Hired And Termianted - are Prorated all Other Target Hours remain the same
-// Target Hours is given
+// Target Hours is given))

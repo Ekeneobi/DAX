@@ -1,1 +1,35 @@
-(.*Crop and Fertilizer Outlook: A Bullish Narrative.*)|(.*Defining And Understanding Enhanced Efficiency Fertilizers.*)|(.*Fall-Applied Nitrogen For Corn Success.*)|(.*Family Farm Safety.*)|(.*Five Tools For The Price Of One: The Case For Farm Water Testing.*)|(.*Growing Degree Days Calculator: Benefits & Use.*)|(.*How Much Phosphorus And Potassium Are You Really Losing?.*)|(.*How should a farmer sample for diagnostic purposes?.*)|(.*Key Insights for a Thriving Wildlife Food Plot -.*)|(.*Manage Nutrients AND High Fertilizer Prices.*)|(.*New Study Identifies Corn Sulfur Needs..*)|(.*Nitrification and Urease Inhibitors: Product Use, Benefits, And More -.*)|(.*Not Your Father’s Fertilizer: Four Ways Fertilizer Has Changed in 40 Years -.*)|(.*Nutrient Uptake Considerations Under Drought.*)|(.*Outlook Brighter for 2023 Growing Season.*)|(.*Outsmart Your “K” – ompetition.*)|(.*Phosphorous: Because It’s Worth It -.*)|(.*Potatoes And The Role Of Enhanced Efficiency Nitrogen Fertilizers.*)|(.*Soil pH: Do You Know How Acidic Your Soil Is?.*)|(.*Starter Fertilizer and Liquid P -.*)|(.*Sulfur Nutrient Management Practices.*)|(.*The Importance Of The 4Rs: Asking The Next Question.*)|(.*The Importance of Potassium Fertilizer.*)|(.*The Right Place: Fertilizer Application Options In The Western US.*)|(.*The Right Place: Fertilizer Application Options In Western Canada.*)|(.*What’s Going On Inside Your Plants?.*)|(.*Winter Wheat Season Is Here – Are You Ready? -.*)|(.*You searched for Starter Fertilizer and Liquid P - eKonomics | The ROI of Fertilizer and Crop Nutrition.*)|(.*You searched for sulfur nutrient management practices - eKonomics | The ROI of Fertilizer and Crop Nutrition.*)
+'DIM_EE'[Business Hours} =Divide('DIM_EE'[Business Hours],5,0) = 'FACT_HR_TARGETS'[Business Hours Week]
+
+'DIM_EE'[cF_termdate] = 'FACT_HR_TARGETS'[Employee Termination Date]
+
+'DIM_EE'[date_Hired]  = 'FACT_HR_TARGETS'[Employee Start Date]
+
+'DIM_EE'[company_Name] = 'FACT_HR_TARGETS'[company]
+
+'DIM_EE'[department] = 'FACT_HR_TARGETS'[Department]
+
+'DIM_EE'[employee] = 'FACT_HR_TARGETS'[Name]
+
+'DIM_EE'[team] = 'FACT_HR_TARGETS'[home team: name]
+
+'DIM_EE'[Business Days Employed CY MTD] = 'FACT_HR_TARGETS'[Business Days Employed CY MTD]                            
+
+'DIM_EE'[Business Days Employed CY YTD] = 'FACT_HR_TARGETS'[Business Days Employed CY YTD]
+
+'DIM_EE'[Business Days Employed PY MTD] = 'FACT_HR_TARGETS'[Business Days Employed PY MTD]
+
+'DIM_EE'[Business Days Employed PY YTD] = 'FACT_HR_TARGETS'[Business Days Employed PY YTD]
+
+'DIM_EE'[STD Hrs by Business Days] = 'FACT_HR_TARGETS'[STD Hrs by Business Days]
+
+'DIM_EE'[STD Hrs by Business Days YTD] = 'FACT_HR_TARGETS'[STD Hrs by Business Days YTD]
+
+'DIM_EE'[STD Hrs minus Adj Hrs] = 'FACT_HR_TARGETS'[STD Hrs minus Adj Hrs]
+
+'DIM_EE'[STD Hrs minus Adj Hrs by Business Days] = 'FACT_HR_TARGETS'[STD Hrs minus Adj Hrs by Business Days]
+
+'DIM_EE'[STD Hrs minus Adj Hrs by Business Days YTD] = 'FACT_HR_TARGETS'[STD Hrs minus Adj Hrs by Business Days YTD]
+
+'DIM_EE'[STD Hrs minus Adj Hrs YTD] = 'FACT_HR_TARGETS'[STD Hrs minus Adj Hrs YTD]
+
+'DIM_EE'[TARGET PRORATED YTD] = 'FACT_HR_TARGETS'[TARGET PRORATED YTD]
